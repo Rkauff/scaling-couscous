@@ -1,0 +1,20 @@
+airtable_token = "patAbceFgVAT3uNU4.bcc532f2b7bec8277b8d1bf61696d71f14e9117da4a252ce9b098b74c08d9c40"
+from datetime import datetime
+#import os
+from pyairtable import Api
+api = Api(airtable_token)
+table = api.table('appohYghW8BOH0Kgv', 'tblfmpWCTI3LAOUV7') #app ID and table ID
+#print(table.all()) #get all details of all records in a table.
+#print(table.get('recmwQCcuLQPaggpA')) #get the details of a single record in table.
+
+now = datetime.now()
+formattedtime = now.strftime("%Y-%m-%d %I:%M:%S %p")
+
+
+record = {'Datestamp': formattedtime, 'Temperature': '100', 'Humidity': '5', 'Location': 'Basement'}
+table.create(record) #to add a new row (i.e. record)
+#table.add_comment('rec4zTM6sdF8l1dda', "Ryan test comment") #to add a comment to a record
+
+#table.update('rec4zTM6sdF8l1dda', {'Temperature': '123'}) #to update an existing record
+#table.delete('rec4zTM6sdF8l1dda') #to delete an existing record
+
